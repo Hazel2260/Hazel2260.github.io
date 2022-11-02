@@ -1,0 +1,62 @@
+---
+title: "Plotly"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+
+library(plotly)
+```
+
+1st: This polt shows the order frequency of every aisle id.
+```{r}
+
+plot_1 =
+  instacart %>%
+  janitor::clean_names()%>%
+  group_by(aisle_id)%>%
+  summarise(n = n())%>%
+  filter(n < 100000)%>%
+  plot_ly(x= ~aisle_id, y = ~n)
+
+plot_1
+
+  
+
+```
+2nd: This polt shows the order frequency of aisle in produce department.
+```{r}
+plot_2 =
+  instacart %>%
+  janitor::clean_names() %>%
+  filter(
+    department == "produce"
+  )%>%
+  group_by(aisle) %>%
+  summarise(
+    n_sum = n()
+  ) %>%
+  mutate(aisle=fct_reorder(aisle,n_sum)) %>%
+   plot_ly(x = ~aisle, y = ~n_sum, color = ~aisle, type = "bar")
+plot_2
+```
+3rd: shows the average reorder time of each aisle in produce department.
+```{r}
+plot_3 = 
+  instacart %>%
+  janitor::clean_names()%>%
+  filter(
+    department == "produce")%>%
+  group_by(aisle)%>%
+  select(aisle, days_since_prior_order)%>%
+  plot_ly(y = ~days_since_prior_order,  type = "box", color = ~aisle)
+
+plot_3
+```
+
+
