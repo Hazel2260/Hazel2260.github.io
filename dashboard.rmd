@@ -16,7 +16,7 @@ library(plotly)
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Chart A :The scatter polt shows the frequency of aisle id.
 
 ```{r}
 instacart %>%
@@ -30,7 +30,7 @@ instacart %>%
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Chart B : Shows the frequency of aisle in produce department.
 
 ```{r}
 instacart %>%
@@ -46,7 +46,7 @@ instacart %>%
    plot_ly(x = ~aisle, y = ~n_sum, color = ~aisle, type = "bar")
 ```
 
-### Chart C
+### Chart C : Shows the average reorder days of aisle in produce department.
 
 ```{r}
 instacart %>%
