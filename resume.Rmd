@@ -1,5 +1,5 @@
 ---
-title: "Qingzhen Sun.github.io"
+title: "my resume"
 output: 
   html_document:
     toc: true
@@ -7,7 +7,7 @@ output:
  
 ---
 
-I'm Qingzhen Sun, and this is my resume website.
+I'm Qingzhen Sun, and this is my website.
 
 # Education
 
@@ -20,7 +20,5 @@ Columbia University -- MS in Biostatistics
 Internship in Cangwu company -- June to August, 2019
 
 
-# Dashboard
-This is my [dashboard](problem2.html) 
 
 

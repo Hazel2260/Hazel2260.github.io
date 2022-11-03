@@ -1,38 +1,39 @@
 ---
-title: "Plotly"
+title: "Untitled"
 output: 
-  html_document:
-    toc: true
-    toc_float: true
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-```{r}
+```{r setup, include=FALSE}
+library(flexdashboard)
 library(tidyverse)
 library(p8105.datasets)
-
 library(plotly)
 ```
 
-1st: This polt shows the order frequency of every aisle id.
-```{r}
+Column {data-width=650}
+-----------------------------------------------------------------------
 
-plot_1 =
-  instacart %>%
+### Chart A
+
+```{r}
+instacart %>%
   janitor::clean_names()%>%
   group_by(aisle_id)%>%
   summarise(n = n())%>%
   filter(n < 100000)%>%
   plot_ly(x= ~aisle_id, y = ~n)
-
-plot_1
-
-  
-
 ```
-2nd: This polt shows the order frequency of aisle in produce department.
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
 ```{r}
-plot_2 =
-  instacart %>%
+instacart %>%
   janitor::clean_names() %>%
   filter(
     department == "produce"
@@ -43,20 +44,17 @@ plot_2 =
   ) %>%
   mutate(aisle=fct_reorder(aisle,n_sum)) %>%
    plot_ly(x = ~aisle, y = ~n_sum, color = ~aisle, type = "bar")
-plot_2
 ```
-3rd: shows the average reorder time of each aisle in produce department.
+
+### Chart C
+
 ```{r}
-plot_3 = 
-  instacart %>%
+instacart %>%
   janitor::clean_names()%>%
   filter(
     department == "produce")%>%
   group_by(aisle)%>%
   select(aisle, days_since_prior_order)%>%
   plot_ly(y = ~days_since_prior_order,  type = "box", color = ~aisle)
-
-plot_3
 ```
-
 

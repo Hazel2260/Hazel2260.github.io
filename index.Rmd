@@ -1,0 +1,19 @@
+---
+title: "My website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+I'm Qingzhen Sun, and this is my website.
+
+# Resume
+
+This is my [resume](resume.html)
+
+# Dashboard
+
+This is my [dashboard](dashboard.html) 
+
+
